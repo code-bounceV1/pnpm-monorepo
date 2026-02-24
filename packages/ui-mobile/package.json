@@ -1,0 +1,49 @@
+{
+  "name": "@pnpm-monorepo/ui-mobile",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "peerDependencies": {
+    "nativewind": "^4.0.0",
+    "react": "*",
+    "react-native": "*"
+  },
+  "dependencies": {
+    "@rn-primitives/accordion": "^1.2.0",
+    "@rn-primitives/alert-dialog": "^1.2.0",
+    "@rn-primitives/aspect-ratio": "^1.2.0",
+    "@rn-primitives/avatar": "^1.2.0",
+    "@rn-primitives/checkbox": "^1.2.0",
+    "@rn-primitives/collapsible": "^1.2.0",
+    "@rn-primitives/context-menu": "^1.2.0",
+    "@rn-primitives/dialog": "^1.2.0",
+    "@rn-primitives/dropdown-menu": "^1.2.0",
+    "@rn-primitives/hover-card": "^1.2.0",
+    "@rn-primitives/label": "^1.2.0",
+    "@rn-primitives/menubar": "^1.2.0",
+    "@rn-primitives/popover": "^1.2.0",
+    "@rn-primitives/progress": "^1.2.0",
+    "@rn-primitives/radio-group": "^1.2.0",
+    "@rn-primitives/select": "^1.2.0",
+    "@rn-primitives/slot": "^1.2.0",
+    "@rn-primitives/switch": "^1.2.0",
+    "@rn-primitives/tabs": "^1.2.0",
+    "@rn-primitives/toggle": "^1.2.0",
+    "@rn-primitives/toggle-group": "^1.2.0",
+    "@rn-primitives/tooltip": "^1.2.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react-native": "^0.378.0",
+    "react-native-svg": "^15.2.0",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./tailwind.config": "./tailwind.config.js",
+    "./global.css": "./global.css"
+  }
+}

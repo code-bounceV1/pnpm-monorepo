@@ -1,0 +1,9 @@
+packages:
+- apps/*
+- packages/*
+
+nodeLinker: hoisted
+
+public-hoist-pattern:
+- "*react*"
+- "*expo*"

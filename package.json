@@ -1,0 +1,34 @@
+{
+  "name": "pnpm-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "mobile": "pnpm --filter mobile start",
+    "mobile:clear": "pnpm --filter mobile start --clear",
+    "mobile:android": "pnpm --filter mobile android",
+    "mobile:ios": "pnpm --filter mobile ios",
+    "mobile:web": "pnpm --filter mobile web",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules",
+    "clean:install": "pnpm clean && pnpm install",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "pnpm": {
+    "overrides": {
+      "react": "19.1.0",
+      "react-native": "0.81.5"
+    }
+  }
+}
