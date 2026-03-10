@@ -1,6 +1,6 @@
 export type Environment = "development" | "staging" | "production";
 
-export type FirebaseConfig = {
+export interface FirebaseConfig {
   apiKey: string;
   authDomain: string;
   projectId: string;
@@ -15,7 +15,7 @@ export type FirebaseConfig = {
   googleAuthEndpoint: string;
   googleTokenEndpoint: string;
   googleRevocationEndpoint: string;
-};
+}
 
 export type AppConfig = {
   environment: Environment;
