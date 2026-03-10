@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "scripts": {
     "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules",
     "clean:install": "pnpm clean && pnpm install",
