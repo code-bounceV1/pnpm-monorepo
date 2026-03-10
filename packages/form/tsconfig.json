@@ -1,10 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": { "@/*": ["./*"] },
     "jsx": "react-native",
-    "allowJs": true
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*", "../ui-mobile/*"]
+    },
+    "skipLibCheck": true
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*", "index.ts", "*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

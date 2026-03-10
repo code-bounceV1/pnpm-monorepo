@@ -454,6 +454,170 @@ export function UploadAvatar() {
 
 ---
 
+## Error Handling
+
+The package provides typed error classes and utilities for handling API errors consistently.
+
+### Error Classes
+
+```ts
+import {
+  ApiError,
+  NetworkError,
+  ValidationError,
+  UnauthorizedError,
+  ForbiddenError,
+  NotFoundError,
+  normalizeApiError,
+  isApiError,
+  isNetworkError,
+  isValidationError,
+  isUnauthorizedError,
+} from "@pnpm-monorepo/api-client";
+```
+
+### Using `normalizeApiError`
+
+Automatically converts Axios errors to typed error classes based on status code:
+
+```tsx
+import {
+  normalizeApiError,
+  isValidationError,
+} from "@pnpm-monorepo/api-client";
+
+const { mutate } = postsClient.useCreateMutation<Post, CreatePostInput>(
+  "/posts",
+  {
+    onError: (error) => {
+      const normalizedError = normalizeApiError(error);
+
+      if (isValidationError(normalizedError)) {
+        // Type-safe access to validation errors
+        Object.entries(normalizedError.errors ?? {}).forEach(
+          ([field, messages]) => {
+            console.error(`${field}: ${messages.join(", ")}`);
+          },
+        );
+      } else {
+        console.error(normalizedError.message);
+      }
+    },
+  },
+);
+```
+
+### Error Mapping
+
+| Status Code | Error Class         | Use Case                                 |
+| ----------- | ------------------- | ---------------------------------------- |
+| 401         | `UnauthorizedError` | User not authenticated                   |
+| 403         | `ForbiddenError`    | User not authorized for this action      |
+| 404         | `NotFoundError`     | Resource not found                       |
+| 422         | `ValidationError`   | Form validation failed (includes errors) |
+| Network     | `NetworkError`      | No response (connection issue)           |
+| Other       | `ApiError`          | Generic API error with status code       |
+
+### Type Guards
+
+Use type guards to narrow error types:
+
+```tsx
+import {
+  isApiError,
+  isNetworkError,
+  isValidationError,
+  isUnauthorizedError,
+} from "@pnpm-monorepo/api-client";
+
+const handleError = (error: unknown) => {
+  const normalized = normalizeApiError(error);
+
+  if (isUnauthorizedError(normalized)) {
+    // Redirect to login
+    router.push("/login");
+  } else if (isValidationError(normalized)) {
+    // Show field-specific errors
+    setErrors(normalized.errors);
+  } else if (isNetworkError(normalized)) {
+    // Show network error toast
+    showToast("Check your connection");
+  } else if (isApiError(normalized)) {
+    // Show generic error with status code
+    showToast(`Error ${normalized.statusCode}: ${normalized.message}`);
+  } else {
+    // Unknown error
+    showToast("An unexpected error occurred");
+  }
+};
+```
+
+### Global Error Handler Example
+
+```ts
+// lib/api.ts
+import {
+  createApiClient,
+  normalizeApiError,
+  isUnauthorizedError,
+} from "@pnpm-monorepo/api-client";
+import { firebaseAuth } from "@pnpm-monorepo/auth-mobile";
+
+export const apiClient = createApiClient({
+  baseURL: "https://your-api.com",
+  configure: (instance) => {
+    instance.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        const normalized = normalizeApiError(error);
+
+        // Auto sign-out on 401
+        if (isUnauthorizedError(normalized)) {
+          await firebaseAuth.signOut();
+        }
+
+        return Promise.reject(normalized);
+      },
+    );
+  },
+});
+```
+
+### Validation Error Example
+
+When your API returns validation errors in this format:
+
+```json
+{
+  "message": "Validation failed",
+  "statusCode": 422,
+  "errors": {
+    "email": ["Email is required", "Email must be valid"],
+    "password": ["Password must be at least 8 characters"]
+  }
+}
+```
+
+Handle them like this:
+
+```tsx
+import { isValidationError } from "@pnpm-monorepo/api-client";
+
+const { mutate } = postsClient.useCreateMutation<Post, CreatePostInput>(
+  "/posts",
+  {
+    onError: (error) => {
+      if (isValidationError(error)) {
+        // error.errors is Record<string, string[]>
+        setFormErrors(error.errors);
+      }
+    },
+  },
+);
+```
+
+---
+
 ## API Reference
 
 | Export                    | Description                                                        |
@@ -470,3 +634,8 @@ export function UploadAvatar() {
 | `useDeleteMutation`       | `useMutation` wrapper for DELETE requests                          |
 | `useUploadMutation`       | `useMutation` wrapper for POST multipart requests                  |
 | `useUploadUpdateMutation` | `useMutation` wrapper for PUT multipart requests                   |
+| `normalizeApiError`       | Converts Axios errors to typed error classes                       |
+| `isApiError`              | Type guard for `ApiError`                                          |
+| `isNetworkError`          | Type guard for `NetworkError`                                      |
+| `isValidationError`       | Type guard for `ValidationError`                                   |
+| `isUnauthorizedError`     | Type guard for `UnauthorizedError`                                 |

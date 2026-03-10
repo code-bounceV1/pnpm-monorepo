@@ -27,7 +27,7 @@ const alertSlice = createSlice({
     },
     setError(state, action: PayloadAction<string>) {
       state.alerts.push({
-        id: Date.now().toString(),
+        id: crypto.randomUUID(),
         type: "error",
         message: action.payload,
       });
@@ -35,20 +35,20 @@ const alertSlice = createSlice({
     },
     setWarning(state, action: PayloadAction<string>) {
       state.alerts.push({
-        id: Date.now().toString(),
+        id: crypto.randomUUID(),
         type: "warning",
         message: action.payload,
       });
     },
     setSuccess(state, action: PayloadAction<string>) {
       state.alerts.push({
-        id: Date.now().toString(),
+        id: crypto.randomUUID(),
         type: "success",
         message: action.payload,
       });
     },
     addAlert(state, action: PayloadAction<Omit<Alert, "id">>) {
-      state.alerts.push({ id: Date.now().toString(), ...action.payload });
+      state.alerts.push({ id: crypto.randomUUID(), ...action.payload });
     },
     removeAlert(state, action: PayloadAction<string>) {
       state.alerts = state.alerts.filter((a) => a.id !== action.payload);
