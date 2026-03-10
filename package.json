@@ -8,9 +8,6 @@
     "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules",
     "clean:install": "pnpm clean && pnpm install",
     "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test",
-    "test:watch": "pnpm -r test:watch",
-    "test:coverage": "pnpm -r test:coverage",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
@@ -28,13 +25,7 @@
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.9.3",
-    "vitest": "^2.0.0",
-    "@vitest/ui": "^2.0.0",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/react-native": "^13.2.0",
-    "@testing-library/jest-dom": "^6.4.0",
-    "jsdom": "^25.0.0"
+    "typescript": "^5.9.3"
   },
   "workspaces": [
     "apps/*",
