@@ -7,8 +7,9 @@ const workspaceRoot = path.resolve(projectRoot, "../..");
 
 const config = getDefaultConfig(projectRoot);
 
-// 👇 Important for pnpm monorepo
-config.watchFolders = [workspaceRoot];
+// 👇 Important for pnpm monorepo - merge with default watchFolders
+const defaultWatchFolders = config.watchFolders || [];
+config.watchFolders = [...defaultWatchFolders, workspaceRoot];
 
 config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, "node_modules"),

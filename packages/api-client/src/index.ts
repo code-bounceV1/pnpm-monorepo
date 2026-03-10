@@ -1,3 +1,2 @@
-export * from "./create-client";
-export * from "./crud";
+export * from "./client";
 export * from "./types";

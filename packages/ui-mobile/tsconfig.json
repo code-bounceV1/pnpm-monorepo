@@ -4,7 +4,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "jsx": "react-native",
+    "allowJs": true
   },
   "include": ["**/*.ts", "**/*.tsx"]
 }

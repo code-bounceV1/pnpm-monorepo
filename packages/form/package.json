@@ -1,0 +1,37 @@
+{
+  "name": "@pnpm-monorepo/form",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./mobile": "./src/platforms/mobile/index.ts",
+    "./web": "./src/platforms/web/index.ts"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-hook-form": "*",
+    "zod": "*",
+    "nativewind": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "@pnpm-monorepo/ui-mobile": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "react-hook-form": "^7.0.0",
+    "zod": "^3.0.0",
+    "@hookform/resolvers": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@pnpm-monorepo/ui-mobile": "workspace:*",
+    "react-native": "*",
+    "lucide-react-native": "*"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@pnpm-monorepo/rbac",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": "./index.ts"
+  }
+}

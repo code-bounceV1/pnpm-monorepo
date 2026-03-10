@@ -7,9 +7,9 @@
     "icon": "./assets/images/icon.png",
     "scheme": "mobile",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.curiosed.mobile"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,8 +18,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.curiosed.mobile"
     },
     "web": {
       "bundler": "metro",
@@ -27,6 +27,20 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 34,
+            "compileSdkVersion": 36,
+            "targetSdkVersion": 36
+          },
+          "ios": {
+            "deploymentTarget": "15.1",
+            "useFrameworks": "static"
+          }
+        }
+      ],
       "expo-router",
       [
         "expo-splash-screen",
@@ -38,6 +52,14 @@
           "dark": {
             "backgroundColor": "#000000"
           }
+        }
+      ],
+      "expo-font",
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
         }
       ]
     ],

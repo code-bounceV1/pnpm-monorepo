@@ -7,7 +7,9 @@
   "peerDependencies": {
     "nativewind": "^4.0.0",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-hook-form": "*",
+    "react-native-reanimated": "*"
   },
   "dependencies": {
     "@rn-primitives/accordion": "^1.2.0",
@@ -26,6 +28,7 @@
     "@rn-primitives/progress": "^1.2.0",
     "@rn-primitives/radio-group": "^1.2.0",
     "@rn-primitives/select": "^1.2.0",
+    "@rn-primitives/separator": "^1.2.0",
     "@rn-primitives/slot": "^1.2.0",
     "@rn-primitives/switch": "^1.2.0",
     "@rn-primitives/tabs": "^1.2.0",
@@ -34,6 +37,7 @@
     "@rn-primitives/tooltip": "^1.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "date-fns": "^3.0.0",
     "lucide-react-native": "^0.378.0",
     "react-native-svg": "^15.2.0",
     "tailwind-merge": "^2.3.0"

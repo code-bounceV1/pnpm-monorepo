@@ -2,7 +2,7 @@ const { hairlineWidth } = require("nativewind/theme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
+  // darkMode: "class", // Disabled to force light mode
   content: [
     "./components/**/*.{ts,tsx}",
     "./hooks/**/*.{ts,tsx}",

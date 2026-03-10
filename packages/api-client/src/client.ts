@@ -1,10 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-
-export interface CreateApiClientOptions {
-  baseURL: string;
-  config?: AxiosRequestConfig;
-  configure?: (instance: AxiosInstance) => void;
-}
+import axios, { AxiosInstance } from "axios";
+import type { CreateApiClientOptions } from "./types";
 
 export const createApiClient = ({
   baseURL,

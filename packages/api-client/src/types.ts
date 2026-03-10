@@ -1,14 +1,14 @@
-import { AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig } from "axios";
 
 export interface RequestOptions<TBody = unknown> {
-  params?: Record<string, any>;
   body?: TBody;
+  params?: Record<string, unknown>;
   headers?: Record<string, string>;
   config?: AxiosRequestConfig;
 }
 
-export interface PaginationParams {
-  page?: number;
-  limit?: number;
-  sort?: string;
+export interface CreateApiClientOptions {
+  baseURL: string;
+  config?: AxiosRequestConfig;
+  configure?: (instance: import("axios").AxiosInstance) => void;
 }

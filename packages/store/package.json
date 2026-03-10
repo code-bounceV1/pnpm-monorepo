@@ -1,0 +1,22 @@
+{
+  "name": "@pnpm-monorepo/store",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "peerDependencies": {
+    "react": "*",
+    "react-redux": "*",
+    "@reduxjs/toolkit": "*"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.0.0",
+    "react-redux": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": "./index.ts"
+  }
+}

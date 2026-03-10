@@ -7,6 +7,25 @@ module.exports = {
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
-    "../../packages/ui-mobile/**/*.{ts,tsx}",
+    "./features/**/*.{ts,tsx}",
+    "./shared/**/*.{ts,tsx}",
+    "../../packages/ui-mobile/components/**/*.{ts,tsx}",
+    "../../packages/ui-mobile/lib/**/*.{ts,tsx}",
+    "../../packages/ui-mobile/index.ts",
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        outfit: ["Outfit-Regular"],
+        "outfit-medium": ["Outfit-Medium"],
+        "outfit-bold": ["Outfit-Bold"],
+        "outfit-semibold": ["Outfit-SemiBold"],
+        "outfit-extrabold": ["Outfit-ExtraBold"],
+        "outfit-black": ["Outfit-Black"],
+        "outfit-light": ["Outfit-Light"],
+        "outfit-thin": ["Outfit-Thin"],
+        "outfit-extralight": ["Outfit-ExtraLight"],
+      },
+    },
+  },
 };
