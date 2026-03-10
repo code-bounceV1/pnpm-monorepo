@@ -15,7 +15,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import type { Storage } from "redux-persist";
-import alertSlice from "./slices/alert.slice";
+import alertReducer from "./slices/alert.slice";
 import type { AlertState } from "./slices/alert.slice";
 
 export interface SlicePersistConfig {
@@ -69,7 +69,7 @@ export function createAppStore<T extends Record<string, SliceConfig>>({
   }, {});
 
   const rootReducer = combineReducers({
-    [alertSlice.name]: alertSlice.reducer,
+    alert: alertReducer,
     ...appReducers,
   });
 
